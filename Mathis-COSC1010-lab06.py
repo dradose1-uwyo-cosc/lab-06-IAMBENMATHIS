@@ -1,12 +1,10 @@
-# Your Name Here
+# Ben Mathis
 # UWYO COSC 1010
-# Submission Date
+# 10/15/24
 # Lab 06
-# Lab Section: 
-# Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# Lab Section: 3
+# Sources, people worked with, help given to: Jackson, Austin Barner
+
 
 
 random_string = """
@@ -64,6 +62,8 @@ zkdenxczyooloczcaahnkehbwimvieedpdlqfafbqvxvfmvabd
 random_string = random_string.replace("\n","") #remove all newline characters
 print(len(random_string)) # Print out the size for reference 
 
+
+
 # Above is a string with 2500 characters.
 # Create a program that goes through and counts the occurrence of each character, excluding \n using a  dictionary
 # Output each letter and its corresponding occurrence in alphabetical order
@@ -85,16 +85,45 @@ print(len(random_string)) # Print out the size for reference
 
 # Output: each letter and its corresponding occurrence in alphabetical order
 
-print("*"*75)
-# Output which letter occurred the most 
+letters = {}
 
-most_occurred = ""
-least_occurred = ""
+for l in random_string:
+    if l not in letters:
+        letters[l] = 1
+    if l in letters:
+        letters[l] += 1
 
-print(f"The letter that occurred the most is {most_occurred}")
+print("Here is the list of corresponding letters and occurences")
+for l, p in sorted(letters.items()):
+    print(f"{l} \t {p}")
+
+
+
+# Output which letter occurred the most
 print("*"*75)
-# Output which letter occurred the least 
-print(f"The letter that occurred the most is {least_occurred}")
+max_letter = "a"
+min_letter = "z"
+for ch in letters.keys():
+    if letters[ch] > letters[max_letter]:
+        max_letter = ch 
+    if letters[ch] < letters[min_letter]:
+        min_letter = ch 
+        
+
+
+print(f"{max_letter} had the most occurences with {letters[max_letter]}")
+
+print(f"{min_letter} had the least occurrences with {letters[min_letter]}")
+
+
+
 print("*"*75)
+
+
+
 
 # Output what the percentage of the string each character is, again in alphabetical
+print("Here is the list of corresponding letters and percentages of occurence.")
+for l, oc, in sorted(letters.items()):
+    oc = oc / len(letters.values())
+    print(f"{l} \t {round(oc, 1)}%")
